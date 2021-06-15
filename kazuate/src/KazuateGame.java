@@ -24,36 +24,33 @@ public class KazuateGame {
             try {
                 line = br.readLine();
             } catch (IOException e) {
-                // TODO Auto-generated catch block
                 System.err.println("入出力例外");;
             }
             try {
                 num = Integer.parseInt(line);
             } catch (NumberFormatException e) {
-                //TODO: handle exception
-                System.err.println("整数フォーマット例外，1000を入力します");
-                num = 1000;
+                System.err.println("整数フォーマット例外です．");
+                continue;
             }
-            
+
             // 正誤判定
             if (num == ans) {
                 System.out.println("正解！");
                 return;
-            } else {
-                System.out.println("残念！間違いです．");
+            } else if (num - ans >= 20){
+                System.out.println("残念！あなたの答えは20以上大きいです．");
+            } else if (num - ans > 0) {
+                System.out.println("残念！あなたの答えは大きいです");
+            } else if (num - ans <= -20) {
+                System.out.println("残念！あなたの答えは20以上小さいです．");
+            } else if (num - ans < 0) {
+                System.out.println("残念！あなたの答えは小さいです．");
             }
-            // 20以上離れている場合
-            if (num - ans >= 20) {
-                System.out.println("あなたの答えは20以上大きいです．");
-            }
-            if (num - ans <= -20) {
-                System.out.println("あなたの答えは20以上小さいです．");
-            }
-            
+
         }
 
-        System.out.println("あなたの負け！正解は" + ans + "でした．");
+        System.out.println("ゲームオーバー！正解は" + ans + "でした．");
 
     }
-    
+
 }
